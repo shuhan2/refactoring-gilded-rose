@@ -1,7 +1,7 @@
 package cn.xpbootcamp.gilded_rose;
 
 class GildedRose {
-    Item[] items;
+    private Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -49,7 +49,7 @@ class GildedRose {
                             }
                         }
                     } else {
-                        items[i].quality = items[i].quality - items[i].quality;
+                        items[i].quality = 0;
                     }
                 } else {
                     if (items[i].quality < 50) {
