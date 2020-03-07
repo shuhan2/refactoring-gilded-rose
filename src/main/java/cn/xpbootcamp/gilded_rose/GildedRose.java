@@ -1,17 +1,19 @@
 package cn.xpbootcamp.gilded_rose;
 
+import cn.xpbootcamp.gilded_rose.items.Item;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 class GildedRose {
-    private Item[] items;
+    private List<Item> items = new ArrayList<>();
 
-    public GildedRose(Item[] items) {
-        this.items = items;
+    public GildedRose(Item... items) {
+        this.items.addAll(Arrays.asList(items));
     }
 
-    public void update_quality() {
-        for (int i = 0; i < items.length; i++) {
-            Item item = items[i];
-            item.update();
-        }
+    public void updateQuality() {
+        items.forEach(Item::update);
     }
-
 }

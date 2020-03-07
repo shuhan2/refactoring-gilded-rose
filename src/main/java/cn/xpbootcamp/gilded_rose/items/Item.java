@@ -1,4 +1,4 @@
-package cn.xpbootcamp.gilded_rose;
+package cn.xpbootcamp.gilded_rose.items;
 
 public abstract class Item {
     protected String name;
@@ -16,7 +16,7 @@ public abstract class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    void update() {
+    public void update() {
         updateQuality();
 
         updateSellIn();
