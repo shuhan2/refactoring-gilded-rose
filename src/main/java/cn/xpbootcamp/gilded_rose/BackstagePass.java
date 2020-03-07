@@ -7,34 +7,23 @@ public class BackstagePass extends Item {
 
     @Override
     protected void updateQuality() {
-        if (isBackstagePass()) {
-            if (quality < 50) {
-                quality = quality + 1;
-                if (sellIn < 11) {
-                    increaseQuality();
-                }
-                if (sellIn < 6) {
-                    increaseQuality();
-                }
-            }
+        increaseQuality();
+        if (sellIn < 11) {
+            increaseQuality();
+        }
+        if (sellIn < 6) {
+            increaseQuality();
         }
     }
 
     @Override
     protected void updateSellIn() {
-        sellIn = sellIn - 1;
+        sellIn = decreaseSellIn();
     }
 
     @Override
     protected void updateQualityAfterExpired() {
-        if (isBackstagePass()) {
-            if (sellIn < 0) {
-                quality = 0;
-            }
-        }
+        quality = 0;
     }
 
-    private boolean isBackstagePass() {
-        return name.equals("Backstage passes to a TAFKAL80ETC concert");
-    }
 }

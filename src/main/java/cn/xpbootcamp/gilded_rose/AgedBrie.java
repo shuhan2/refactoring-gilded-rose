@@ -7,28 +7,16 @@ public class AgedBrie extends Item {
 
     @Override
     protected void updateQuality() {
-        if (isAgedBrie()) {
-            if (quality < 50) {
-                quality = quality + 1;
-            }
-        }
+        increaseQuality();
     }
 
     @Override
     protected void updateSellIn() {
-        sellIn = sellIn - 1;
+        sellIn = decreaseSellIn();
     }
 
     @Override
     protected void updateQualityAfterExpired() {
-        if (isAgedBrie()) {
-            if (sellIn < 0) {
-                increaseQuality();
-            }
-        }
-    }
-
-    private boolean isAgedBrie() {
-        return name.equals("Aged Brie");
+        increaseQuality();
     }
 }
