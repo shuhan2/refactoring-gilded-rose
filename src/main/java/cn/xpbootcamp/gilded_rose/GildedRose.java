@@ -22,11 +22,11 @@ class GildedRose {
       }
       if (!items[i].name.equals(AGED_BRIE)
           && !items[i].name.equals(BACKSTAGE_PASSES)) {
-        if (items[i].quality > MIN_QUALITY) {
-          if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-            items[i].quality = items[i].quality - 1;
-          }
+
+        if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
+          items[i].quality = items[i].quality - 1;
         }
+
       } else {
 
         items[i].quality = items[i].quality + 1;
@@ -36,21 +36,16 @@ class GildedRose {
             items[i].quality = items[i].quality + 1;
           }
           if (items[i].sell_in < 6) {
-
             items[i].quality = items[i].quality + 1;
-
           }
         }
-
       }
 
       if (items[i].sell_in < 0) {
         if (!items[i].name.equals(AGED_BRIE)) {
           if (!items[i].name.equals(BACKSTAGE_PASSES)) {
-            if (items[i].quality > MIN_QUALITY) {
-              if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-                items[i].quality = items[i].quality - 1;
-              }
+            if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
+              items[i].quality = items[i].quality - 1;
             }
           } else {
             items[i].quality = MIN_QUALITY;
@@ -62,6 +57,9 @@ class GildedRose {
       }
       if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS) && items[i].quality > MAX_QUALITY) {
         items[i].quality = MAX_QUALITY;
+      }
+      if (items[i].quality < MIN_QUALITY) {
+        items[i].quality = MIN_QUALITY;
       }
     }
   }
