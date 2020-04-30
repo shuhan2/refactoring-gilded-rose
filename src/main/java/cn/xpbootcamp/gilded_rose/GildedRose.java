@@ -23,29 +23,25 @@ class GildedRose {
       }
       items[i].sell_in = items[i].sell_in - 1;
       if (!name.equals(AGED_BRIE) && !name.equals(BACKSTAGE_PASSES)) {
-        items[i].quality = items[i].quality - 1;
+        items[i].quality = getChangedQuality(items[i].quality, -1);
         if (items[i].sell_in < 0) {
-          items[i].quality = items[i].quality - 1;
+          items[i].quality = getChangedQuality(items[i].quality, -1);
         }
       } else {
-
-
         if (name.equals(BACKSTAGE_PASSES)) {
           if (items[i].sell_in < 0) {
             items[i].quality = MIN_QUALITY;
           } else if (items[i].sell_in < 6) {
-            items[i].quality = items[i].quality + 3;
+            items[i].quality = getChangedQuality(items[i].quality, 3);
           } else if (items[i].sell_in < 11) {
-            items[i].quality = items[i].quality + 2;
+            items[i].quality = getChangedQuality(items[i].quality, 2);
           } else {
-            items[i].quality = items[i].quality + 1;
+            items[i].quality = getChangedQuality(items[i].quality, 1);
           }
-
         } else {
-          items[i].quality = items[i].quality + 1;
+          items[i].quality = getChangedQuality(items[i].quality, 1);
         }
       }
-
       if (items[i].quality > MAX_QUALITY) {
         items[i].quality = MAX_QUALITY;
       }
@@ -53,5 +49,9 @@ class GildedRose {
         items[i].quality = MIN_QUALITY;
       }
     }
+  }
+
+  private int getChangedQuality(int originalQuality, int changedValue) {
+    return originalQuality + changedValue;
   }
 }
