@@ -22,4 +22,8 @@ public class Item {
     boolean isEqualsName(String targetName) {
       return name.equals(targetName);
     }
+
+    boolean isExpired() {
+      return sell_in < 0;
+    }
 }
