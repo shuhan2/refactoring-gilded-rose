@@ -39,7 +39,7 @@ public class TextTestFixture {
                 printStream.println(item);
             }
             printStream.println();
-            app.update_quality();
+            app.updateQualityAndSellInForOneDay();
         }
 
         return outputStream.toString();

@@ -14,7 +14,7 @@ class GildedRose {
     this.items = items;
   }
 
-  public void update_quality() {
+  public void updateQualityAndSellInForOneDay() {
 
     for (Item item : items) {
       if (item.isEqualsName(SULFURAS)) {
