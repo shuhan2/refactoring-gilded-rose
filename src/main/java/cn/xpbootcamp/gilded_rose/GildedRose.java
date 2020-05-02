@@ -16,37 +16,37 @@ class GildedRose {
 
   public void update_quality() {
 
-    for (int i = 0; i < items.length; i++) {
-      String name = items[i].name;
+    for (Item item : items) {
+      String name = item.name;
       if (name.equals(SULFURAS)) {
         continue;
       }
-      items[i].sell_in = items[i].sell_in - 1;
+      item.sell_in = item.sell_in - 1;
       if (!name.equals(AGED_BRIE) && !name.equals(BACKSTAGE_PASSES)) {
-        items[i].quality = getChangedQuality(items[i].quality, -1);
-        if (items[i].sell_in < 0) {
-          items[i].quality = getChangedQuality(items[i].quality, -1);
+        item.quality = getChangedQuality(item.quality, -1);
+        if (item.sell_in < 0) {
+          item.quality = getChangedQuality(item.quality, -1);
         }
       } else {
         if (name.equals(BACKSTAGE_PASSES)) {
-          if (items[i].sell_in < 0) {
-            items[i].quality = MIN_QUALITY;
-          } else if (items[i].sell_in < 6) {
-            items[i].quality = getChangedQuality(items[i].quality, 3);
-          } else if (items[i].sell_in < 11) {
-            items[i].quality = getChangedQuality(items[i].quality, 2);
+          if (item.sell_in < 0) {
+            item.quality = MIN_QUALITY;
+          } else if (item.sell_in < 6) {
+            item.quality = getChangedQuality(item.quality, 3);
+          } else if (item.sell_in < 11) {
+            item.quality = getChangedQuality(item.quality, 2);
           } else {
-            items[i].quality = getChangedQuality(items[i].quality, 1);
+            item.quality = getChangedQuality(item.quality, 1);
           }
         } else {
-          items[i].quality = getChangedQuality(items[i].quality, 1);
+          item.quality = getChangedQuality(item.quality, 1);
         }
       }
-      if (items[i].quality > MAX_QUALITY) {
-        items[i].quality = MAX_QUALITY;
+      if (item.quality > MAX_QUALITY) {
+        item.quality = MAX_QUALITY;
       }
-      if (items[i].quality < MIN_QUALITY) {
-        items[i].quality = MIN_QUALITY;
+      if (item.quality < MIN_QUALITY) {
+        item.quality = MIN_QUALITY;
       }
     }
   }
