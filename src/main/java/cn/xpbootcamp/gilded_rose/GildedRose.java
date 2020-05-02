@@ -17,17 +17,17 @@ class GildedRose {
   public void update_quality() {
 
     for (Item item : items) {
-      if (isEqualsName(SULFURAS, item)) {
+      if (item.isEqualsName(SULFURAS)) {
         continue;
       }
       item.sell_in = item.sell_in - 1;
-      if (!isEqualsName(AGED_BRIE, item) && !isEqualsName(BACKSTAGE_PASSES, item)) {
+      if (!item.isEqualsName(AGED_BRIE) && !item.isEqualsName(BACKSTAGE_PASSES)) {
         item.quality = getChangedQuality(item.quality, -1);
         if (item.sell_in < 0) {
           item.quality = getChangedQuality(item.quality, -1);
         }
       } else {
-        if (isEqualsName(BACKSTAGE_PASSES, item)) {
+        if (item.isEqualsName(BACKSTAGE_PASSES)) {
           if (item.sell_in < 0) {
             item.quality = MIN_QUALITY;
           } else if (item.sell_in < 6) {
@@ -49,11 +49,6 @@ class GildedRose {
       }
     }
   }
-
-  private boolean isEqualsName(String targetName, Item item) {
-    return item.name.equals(targetName);
-  }
-
 
   private int getChangedQuality(int originalQuality, int changedValue) {
     return originalQuality + changedValue;
